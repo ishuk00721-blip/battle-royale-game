@@ -2,33 +2,68 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
   <title>Battle Royale</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <div id="hud">
-    ❤️ Health: <span id="health">100</span>
-    | 🔫 Ammo: <span id="ammo">10</span>
+    ❤️ <span id="health">100</span>
+    &nbsp; | &nbsp;
+    🔫 <span id="weapon">Pistol</span>
+    &nbsp; | &nbsp;
+    Ammo: <span id="ammo">12</span>
+    &nbsp; | &nbsp;
+    👥 Enemies: <span id="enemyCount">5</span>
   </div>
 
   <div id="game">
+
+    <div id="safeZone"></div>
+
+    <div class="building building1"></div>
+    <div class="building building2"></div>
+    <div class="building building3"></div>
+
     <div id="player"></div>
-    <div id="enemy"></div>
+
+    <div class="enemy" style="left:20%;top:25%;"></div>
+    <div class="enemy" style="left:75%;top:20%;"></div>
+    <div class="enemy" style="left:25%;top:70%;"></div>
+    <div class="enemy" style="left:75%;top:70%;"></div>
+    <div class="enemy" style="left:55%;top:35%;"></div>
+
   </div>
 
   <div id="controls">
+
     <button onclick="move(0,-1)">▲</button>
+
     <br>
+
     <button onclick="move(-1,0)">◀</button>
     <button onclick="move(0,1)">▼</button>
     <button onclick="move(1,0)">▶</button>
+
     <br>
-    <button id="fire" onclick="shoot()">🔫 FIRE</button>
+
+    <button onclick="shoot()">🔫 FIRE</button>
     <button onclick="reload()">🔄 Reload</button>
+
+    <br>
+
+    <button onclick="changeWeapon()">
+      🔁 Change Weapon
+    </button>
+
   </div>
+
+  <div id="message"></div>
 
   <script src="game.js"></script>
 
