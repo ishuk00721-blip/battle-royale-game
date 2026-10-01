@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #111;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+#game {
+  width: 100vw;
+  height: 80vh;
+  background: #4d8038;
+  position: relative;
+  overflow: hidden;
+}
+
+#player {
+  width: 40px;
+  height: 40px;
+  background: red;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#controls {
+  text-align: center;
+  padding: 15px;
+}
+
+button {
+  width: 60px;
+  height: 50px;
+  margin: 3px;
+  font-size: 22px;
+  border: none;
+  border-radius: 10px;
+}
