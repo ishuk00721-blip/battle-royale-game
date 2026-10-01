@@ -4,62 +4,159 @@
 
 body {
   margin: 0;
-  background: #111;
+  background: #101010;
   color: white;
   font-family: Arial, sans-serif;
   overflow: hidden;
 }
 
 #hud {
-  height: 50px;
-  padding: 15px;
+  height: 55px;
+  padding: 15px 5px;
   background: #222;
   text-align: center;
+  font-size: 14px;
 }
 
 #game {
   width: 100vw;
-  height: 70vh;
-  background: #4d8038;
+  height: 68vh;
   position: relative;
   overflow: hidden;
+
+  background-color: #4d8038;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.04) 1px,
+      transparent 1px
+    );
+
+  background-size: 40px 40px;
 }
 
-#player,
-#enemy {
-  width: 40px;
-  height: 40px;
+/* SAFE ZONE */
+
+#safeZone {
   position: absolute;
+
+  width: 75%;
+  height: 90%;
+
+  left: 12.5%;
+  top: 5%;
+
+  border: 5px solid #00e5ff;
   border-radius: 50%;
+
+  pointer-events: none;
+
+  box-shadow:
+    0 0 20px rgba(0,229,255,0.6);
 }
+
+/* PLAYER */
 
 #player {
-  background: #168cff;
+  width: 38px;
+  height: 38px;
+
+  position: absolute;
+
   left: 50%;
   top: 50%;
+
   transform: translate(-50%, -50%);
+
+  background: #168cff;
+
+  border: 3px solid white;
+
+  border-radius: 50%;
+
+  z-index: 5;
 }
 
-#enemy {
-  background: red;
-  left: 75%;
-  top: 40%;
+/* ENEMIES */
+
+.enemy {
+  width: 35px;
+  height: 35px;
+
+  position: absolute;
+
+  background: #e53935;
+
+  border: 3px solid white;
+
+  border-radius: 50%;
+
+  z-index: 4;
 }
+
+/* BUILDINGS */
+
+.building {
+  position: absolute;
+
+  background: #777;
+
+  border: 4px solid #444;
+
+  z-index: 2;
+}
+
+.building1 {
+  width: 100px;
+  height: 70px;
+
+  left: 8%;
+  top: 12%;
+}
+
+.building2 {
+  width: 120px;
+  height: 80px;
+
+  right: 8%;
+  top: 15%;
+}
+
+.building3 {
+  width: 90px;
+  height: 100px;
+
+  left: 42%;
+  bottom: 8%;
+}
+
+/* CONTROLS */
 
 #controls {
   text-align: center;
+
   padding: 8px;
 }
 
 button {
-  width: 60px;
-  height: 45px;
+  width: 65px;
+  height: 43px;
+
   margin: 3px;
-  font-size: 18px;
-  border: 0;
+
+  border: none;
   border-radius: 8px;
+
+  font-size: 17px;
 }
 
-#fire {
-  width: 120px;
+#message {
+  text-align: center;
+  color: #00e5ff;
+  font-weight: bold;
 }
