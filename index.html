@@ -9,8 +9,14 @@
 
 <body>
 
+  <div id="hud">
+    ❤️ Health: <span id="health">100</span>
+    | 🔫 Ammo: <span id="ammo">10</span>
+  </div>
+
   <div id="game">
     <div id="player"></div>
+    <div id="enemy"></div>
   </div>
 
   <div id="controls">
@@ -19,6 +25,9 @@
     <button onclick="move(-1,0)">◀</button>
     <button onclick="move(0,1)">▼</button>
     <button onclick="move(1,0)">▶</button>
+    <br>
+    <button id="fire" onclick="shoot()">🔫 FIRE</button>
+    <button onclick="reload()">🔄 Reload</button>
   </div>
 
   <script src="game.js"></script>
