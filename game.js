@@ -1,4 +1,9 @@
-const player = document.getElementById("player");
+const socket = new WebSocket(
+  `wss://${location.host}`
+);
+
+let myPlayerId = null;
+let networkPlayers = {};const player = document.getElementById("player");
 const enemies = document.querySelectorAll(".enemy");
 
 const healthText = document.getElementById("health");
@@ -304,3 +309,77 @@ setInterval(zoneDamage, 1000);
 ========================= */
 
 updateWeapon();
+socket.addEventListener("open", () => {
+
+  console.log("Connected to multiplayer server");
+
+});
+
+
+socket.addEventListener("message", event => {
+
+  const message = JSON.parse(event.data);
+
+  if (message.type === "welcome") {
+
+    myPlayerId = message.id;
+
+    console.log(
+      "My player ID:",
+      myPlayerId
+    );
+
+  }
+
+  if (message.type === "players") {
+
+    networkPlayers = message.players;
+
+    updateNetworkPlayers();
+  }
+
+});
+
+
+socket.addEventListener("close", () => {
+
+  console.log("Disconnected from server");
+
+});
+
+
+function sendMyPosition() {
+
+  if (
+    socket.readyState === WebSocket.OPEN &&
+    myPlayerId
+  ) {
+
+    socket.send(JSON.stringify({
+      type: "move",
+      x: x,
+      y: y
+    }));
+
+  }
+
+}
+
+
+function updateNetworkPlayers() {
+
+  Object.keys(networkPlayers).forEach(id => {
+
+    if (id === myPlayerId) {
+      return;
+    }
+
+    console.log(
+      "Other player:",
+      id,
+      networkPlayers[id]
+    );
+
+  });
+
+  }
